@@ -16,16 +16,15 @@
         .top-header-wrapper {
             display: flex;
             width: 100%;
-            height: 60px; /* زدنا شوية فالعلو باش اللوغو يبان مزيان */
+            height: 60px;
             align-items: center;
-            /* Logo Background Transparent implicitly shows body color */
         }
 
         /* Partie 1: Le Logo (Left - 25%) */
         .top-bar-logo {
             width: 25%;
             height: 100%;
-            background-color: transparent; /* خلفية شفافة */
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -47,12 +46,11 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            font-size: 9px; /* كبرنا الخط شوية */
+            font-size: 9px;
             font-weight: 900;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             padding: 0 10px;
-            /* ديكور باش تجي مقطعة من الجنب (اختياري) */
             clip-path: polygon(20px 0, 100% 0, 100% 100%, 0% 100%);
         }
 
@@ -158,14 +156,23 @@
         .social-proof { text-align: center; padding: 20px; font-size: 1.1rem; font-weight: 600; }
 
         /* --- Galerie --- */
-        .gallery-section { padding: 20px; padding-bottom: 100px; }
+        .gallery-section { 
+            padding: 20px; 
+            padding-bottom: 10px; /* MODIFIÉ: Na9asna l'espace thtani */
+        }
         .gallery-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .gallery-card { position: relative; width: 280px; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.4); background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
         .gallery-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-card .label { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); color: #FFC107; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; z-index: 2; text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- Reviews --- */
-        .testimonials-section { padding: 50px 0; background-color: #0f1c2e; text-align: center; overflow: hidden; }
+        .testimonials-section { 
+            padding-top: 20px; /* MODIFIÉ: Na9asna l'espace lfo9ani */
+            padding-bottom: 50px;
+            background-color: #0f1c2e; 
+            text-align: center; 
+            overflow: hidden; 
+        }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; color: white; text-transform: uppercase; padding: 0 20px; }
         .reviews-container { width: 100%; position: relative; overflow: hidden; }
         .reviews-track { display: flex; gap: 20px; width: max-content; animation: scroll 30s linear infinite; }
@@ -239,7 +246,7 @@
         </div>
 
         <div class="top-bar-text">
-            <p style="color: #fff;">+3500 Lavages effectués | +50000 Litres d'eau économisés | 99% Client satisfaits</p>
+            <p>SERVICE À DOMICILE | <span>09:15:29</span></p>
         </div>
 
     </div>
@@ -250,7 +257,7 @@
 
         <div class="hero-content">
             
-            <h1>LAVAGE AUTO<br> <span class="text-yellow">SANS EAU,</span>CHEZ VOUS.</h1>
+            <h1>LAVAGE AUTO<br>SANS EAU, <span class="text-yellow">CHEZ VOUS.</span></h1>
             <p class="sub-text">Un lavage professionnel, sans une goutte d'eau,<br>directement là où votre voiture est stationnée.</p>
 
             <div class="action-buttons">
@@ -360,7 +367,7 @@
 
     <div class="footer-cta">
         <p>Plus de <strong>1 000 clients satisfaits</strong> ont fait confiance à Zéro'Eau</p>
-        <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-button">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="cta-button">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
     </div>
 
     <div id="tarifsModal" class="modal-overlay" onclick="closeTarifs(event)">
