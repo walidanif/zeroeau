@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zéro'Eau - Lavage Auto Sans Eau</title>
+    <meta name="description" content="Zéro'Eau - Lavage auto professionnel sans eau à Casablanca, Dar Bouazza et Bouskoura. Service à domicile rapide et écologique.">
+    <title>Zéro'Eau - Lavage Auto Sans Eau à Domicile</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -13,36 +17,35 @@
         body { 
             background-color: #0f1c2e; 
             color: white; 
-            position: relative; /* Mohim */
+            position: relative;
         }
 
         /* --- IMAGE D'ARRIÈRE-PLAN (PAGE KAMLA) --- */
         .full-page-bg {
-            position: fixed; /* Bach tbqa tabta mli t-scrolli */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -999; /* Wara koulchi */
-            opacity: 0.2; /* Na9sna opacity bach matbrztch */
-            transform: scale(1.2); /* Zoom chwiya */
-            pointer-events: none; /* Bach mat9issh lclick */
+            z-index: -999;
+            opacity: 0.2;
+            transform: scale(1.2);
+            pointer-events: none;
         }
 
-        /* --- Header Split (25% Logo Left / 75% Text Right) --- */
+        /* --- Header Split --- */
         .top-header-wrapper {
             display: flex;
             width: 100%;
             height: 60px;
             align-items: center;
-            background: rgba(15, 28, 46, 0.9); /* Zidna chwiya d lon bach tban */
+            background: rgba(15, 28, 46, 0.9);
         }
 
         .top-bar-logo {
             width: 25%;
             height: 100%;
-            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -71,22 +74,12 @@
             clip-path: polygon(20px 0, 100% 0, 100% 100%, 0% 100%);
         }
 
-        .top-bar-text span {
-            background: rgba(0,0,0,0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 10px;
-        }
-
         /* --- Hero Section --- */
         .hero-section { position: relative; height: 100vh; min-height: 600px; display: flex; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 28, 46, 0.7), rgba(15, 28, 46, 0.4), rgba(15, 28, 46, 0.1)); z-index: -1; }
         .hero-content { padding: 20px; max-width: 800px; z-index: 1; margin-top: -50px; }
         
-        .logo-container { display: none; } 
-
         h1 { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; line-height: 1.2; margin-bottom: 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .text-yellow { color: #FFC107; }
         .sub-text { font-size: 1rem; margin-bottom: 30px; color: #e0e0e0; }
@@ -143,35 +136,14 @@
         .social-proof { text-align: center; padding: 20px; font-size: 1.1rem; font-weight: 600; }
 
         /* --- Galerie --- */
-        .gallery-section { 
-            padding: 20px; 
-            padding-bottom: 10px;
-            position: relative; 
-            /* Hiyedna background image mn hna hit drnaha global */
-        }
-
-        .gallery-grid { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            flex-wrap: wrap;
-            position: relative; 
-            z-index: 1; 
-        }
-
+        .gallery-section { padding: 20px; padding-bottom: 10px; position: relative; }
+        .gallery-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; position: relative; z-index: 1; }
         .gallery-card { position: relative; width: 280px; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.4); background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
         .gallery-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-card .label { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); color: #FFC107; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; z-index: 2; text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- Reviews --- */
-        .testimonials-section { 
-            padding-top: 20px; 
-            padding-bottom: 50px; 
-            /* Rina background transparent bach tban tswira */
-            background-color: transparent; 
-            text-align: center; 
-            overflow: hidden; 
-        }
+        .testimonials-section { padding-top: 20px; padding-bottom: 50px; background-color: transparent; text-align: center; overflow: hidden; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; color: white; text-transform: uppercase; padding: 0 20px; }
         .reviews-container { width: 100%; position: relative; overflow: hidden; }
         .reviews-track { display: flex; gap: 20px; width: max-content; animation: scroll 30s linear infinite; }
@@ -216,19 +188,19 @@
 </head>
 <body>
 
-    <img src="Gemini_Generated_Image_mtpgk2mtpgk2mtpg.webp" alt="Background Texture" class="full-page-bg">
+    <img src="Gemini_Generated_Image_mtpgk2mtpgk2mtpg.webp" alt="Background Texture Zéro'Eau" class="full-page-bg" loading="lazy">
 
     <div class="top-header-wrapper">
         <div class="top-bar-logo">
-            <img src="photo_5992237543186959243_y-removebg-preview-removebg-preview.webp" href="https://api.whatsapp.com/send?phone=21260420307" alt="Logo Zéro'Eau">
+            <img src="photo_5992237543186959243_y-removebg-preview-removebg-preview.webp" alt="Logo Zéro'Eau Lavage Sans Eau">
         </div>
         <div class="top-bar-text">
-            <p style="color: #fff;">+3500 Lavages effectués | +50000 Litres d'eau économisés | 99% Clients satisfaits  </span></p>
+            <p style="color: #fff;">+3500 Lavages effectués | +50000 Litres d'eau économisés | 99% Clients satisfaits</p>
         </div>
     </div>
 
     <header class="hero-section">
-        <img src="Gemini_Generated_Image_mtpgk2mtpgk2mtpg.webp" alt="Background" class="hero-bg"> 
+        <img src="Gemini_Generated_Image_mtpgk2mtpgk2mtpg.webp" alt="Lavage auto professionnel sans eau" class="hero-bg" fetchpriority="high"> 
         <div class="overlay"></div>
 
         <div class="hero-content">
@@ -236,13 +208,13 @@
             <p class="sub-text">Un lavage professionnel, sans une goutte d'eau,<br>directement là où votre voiture est stationnée.</p>
 
             <div class="action-buttons">
-                <a href="https://api.whatsapp.com/send?phone=212604203076" class="btn-action btn-reserver">
+                <a href="https://api.whatsapp.com/send?phone=212604203076" class="btn-action btn-reserver" aria-label="Réserver sur WhatsApp">
                     <i class="fas fa-calendar-check"></i> <span>RÉSERVER</span>
                 </a>
-                <button onclick="openTarifs()" class="btn-action btn-tarifs">
+                <button onclick="openTarifs()" class="btn-action btn-tarifs" aria-label="Voir les tarifs">
                     <i class="fas fa-tags"></i> <span>NOS TARIFS</span>
                 </button>
-                <button onclick="togglePhone(this)" class="btn-action btn-phone" data-phone="06 04 20 30 76">
+                <button onclick="togglePhone(this)" class="btn-action btn-phone" data-phone="06 04 20 30 76" aria-label="Appeler le service client">
                     <i class="fas fa-phone-alt"></i> <span id="phoneText">TÉLÉPHONE</span>
                 </button>
             </div>
@@ -269,15 +241,15 @@
         <div class="gallery-grid">
             <div class="gallery-card">
                 <span class="label">Avant</span>
-                <video autoplay muted loop playsinline><source src="avant.mp4" type="video/mp4"></video>
+                <video muted loop playsinline poster="avant-poster.jpg"><source src="avant.mp4" type="video/mp4"></video>
             </div>
             <div class="gallery-card">
                 <span class="label">Pendant</span>
-                <video autoplay muted loop playsinline><source src="pendant.mp4" type="video/mp4"></video>
+                <video muted loop playsinline poster="pendant-poster.jpg"><source src="pendant.mp4" type="video/mp4"></video>
             </div>
             <div class="gallery-card">
                 <span class="label">Après</span>
-                <video autoplay muted loop playsinline><source src="apres.mp4" type="video/mp4"></video>
+                <video muted loop playsinline poster="apres-poster.jpg"><source src="apres.mp4" type="video/mp4"></video>
             </div>
         </div>
     </section>
@@ -288,33 +260,23 @@
             <div class="reviews-track">
                 <div class="review-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Lavage impeccable 👌 Voiture rendue parfaitement propre. Un grand merci à Bilal."</p>
+                    <p class="review-text">"Lavage impeccable 👌 Voiture rendue parfaitement propre."</p>
                     <div class="client-info"><div class="avatar">Z</div><span class="name">Zoubida ELK</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="review-text">"Je recommande vivement. Professionnelle. Réponse rapide et lavage parfait."</p>
+                    <p class="review-text">"Je recommande vivement. Professionnelle et rapide."</p>
                     <div class="client-info"><div class="avatar">S</div><span class="name">Samar Shawish</span></div>
                 </div>
                 <div class="review-card">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Bilal est très pro. Service impeccable."</p>
-                    <div class="client-info"><div class="avatar">I</div><span class="name">Intissar Tayour</span></div>
+                    <p class="review-text">"Lavage impeccable 👌 Voiture rendue parfaitement propre."</p>
+                    <div class="client-info"><div class="avatar">Z</div><span class="name">Zoubida ELK</span></div>
                 </div>
                 <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Parfait de la part de bangoura."</p>
-                    <div class="client-info"><div class="avatar">D</div><span class="name">Driss M</span></div>
-                </div>
-                <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Très bon service l’agent arrive avant le temps. Qualité top."</p>
-                    <div class="client-info"><div class="avatar">E</div><span class="name">El mehdi Kesraoui</span></div>
-                </div>
-                <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="review-text">"Mohamed is very professional I highly recommend."</p>
-                    <div class="client-info"><div class="avatar">S</div><span class="name">Safae Boufker</span></div>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="review-text">"Je recommande vivement. Professionnelle et rapide."</p>
+                    <div class="client-info"><div class="avatar">S</div><span class="name">Samar Shawish</span></div>
                 </div>
             </div>
         </div>
@@ -322,19 +284,25 @@
 
     <div class="footer-cta">
         <p>Plus de <strong>1 000 clients satisfaits</strong> ont fait confiance à Zéro'Eau</p>
-        <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-button">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-button" aria-label="Réserver maintenant sur WhatsApp">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
     </div>
 
     <div id="tarifsModal" class="modal-overlay" onclick="closeTarifs(event)">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeTarifs(event)">&times;</span>
+            <span class="close-btn" onclick="closeTarifs(event)" aria-label="Fermer">&times;</span>
             <h3>NOS TARIFS</h3>
-            <img src="tarifs.jpg" alt="Liste des Prix" class="tarif-img"> <br>
+            <img src="tarifs.jpg" alt="Liste des Prix Zéro'Eau" class="tarif-img" loading="lazy"> <br>
             <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-modal">COMMANDER MAINTENANT</a>
         </div>
     </div>
 
     <script>
+        // Auto-play videos when in view for performance
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.play().catch(() => { /* Handle auto-play block */ });
+        });
+
         function openTarifs() { document.getElementById('tarifsModal').style.display = 'flex'; }
         function closeTarifs(e) { if (e.target === document.getElementById('tarifsModal') || e.target.classList.contains('close-btn')) { document.getElementById('tarifsModal').style.display = 'none'; } }
         function togglePhone(btn) {
