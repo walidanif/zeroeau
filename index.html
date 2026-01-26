@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zéro'Eau - Lavage auto professionnel sans eau à Casablanca, Dar Bouazza et Bouskoura. Service à domicile rapide et écologique.">
+    <meta name="description" content="Zéro'Eau - Lavage auto professionnel sans eau à Casablanca, Dar Bouazza et Bouskoura et Mohammedia. Service à domicile rapide et écologique.">
     <title>Zéro'Eau - Lavage Auto Sans Eau à Domicile</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,10 +125,11 @@
         /* --- Timing Boxes --- */
         .timing-options { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; }
         .timing-box { flex: 1; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 8px 5px; text-align: center; font-size: 0.75rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
-        .badge-icon { color: #25D366; font-size: 0.9rem; }
+        .badge-icon { color: #FFC107; font-size: 0.9rem; }
 
         /* --- Features --- */
-        .features p { margin: 8px 0; font-size: 1.1rem; font-weight: 500; }
+        .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 15px; }
+        .features p { margin: 0; font-size: 1.1rem; font-weight: 500; }
         .features i { color: #FFC107; margin-right: 8px; }
         .price { color: #FFC107; font-weight: 700; }
 
@@ -136,12 +137,7 @@
         .social-proof { text-align: center; padding: 20px; font-size: 1.1rem; font-weight: 600; }
 
         /* --- Galerie --- */
-        .gallery-section { padding: 20px; padding-bottom: 10px; position: relative; }
-        .gallery-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; position: relative; z-index: 1; }
-        .gallery-card { position: relative; width: 280px; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.4); background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .gallery-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .gallery-card .label { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); color: #FFC107; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; z-index: 2; text-transform: uppercase; letter-spacing: 1px; }
-
+       
         /* --- Reviews --- */
         .testimonials-section { padding-top: 20px; padding-bottom: 50px; background-color: transparent; text-align: center; overflow: hidden; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; color: white; text-transform: uppercase; padding: 0 20px; }
@@ -168,6 +164,39 @@
         .cta-modal { display: block; background: #FFC107; color: black; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; }
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
+        /* --- WHATSAPP FLOATING BUTTON STYLE --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 3px #1a1a1a;
+            z-index: 1000; /* Assez haut, mais en dessous du modal (9999) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             h1 { font-size: 1.5rem; }
@@ -183,6 +212,9 @@
             .reviews-track { animation: scroll 20s linear infinite; }
             .review-card { min-width: 280px; }
             .top-bar-text { font-size: 8px; }
+            
+            /* Ajustement bouton WhatsApp mobile */
+            .whatsapp-float { width: 50px; height: 50px; font-size: 28px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -208,26 +240,42 @@
             <p class="sub-text">Un lavage professionnel, sans une goutte d'eau,<br>directement là où votre voiture est stationnée.</p>
 
             <div class="action-buttons">
-                <a href="https://api.whatsapp.com/send?phone=212604203076" class="btn-action btn-reserver" aria-label="Réserver sur WhatsApp">
-                    <i class="fas fa-calendar-check"></i> <span>RÉSERVER</span>
-                </a>
-                <button onclick="openTarifs()" class="btn-action btn-tarifs" aria-label="Voir les tarifs">
+                <a href="https://wa.me/212604203076" class="btn-action btn-reserver" style="background-color: #FFC107;" aria-label="Réserver sur WhatsApp">
+    <i class="fab fa-whatsapp"></i> <span>RÉSERVER</span>
+</a>
+                <button onclick="openTarifs()" class="btn-action btn-tarifs"  aria-label="Voir les tarifs">
                     <i class="fas fa-tags"></i> <span>NOS TARIFS</span>
                 </button>
-                <button onclick="togglePhone(this)" class="btn-action btn-phone" data-phone="06 04 20 30 76" aria-label="Appeler le service client">
+                <button onclick="togglePhone(this)" class="btn-action btn-phone" data-phone="06 04 20 30 76" aria-label="Appeler le service client" style="background-color: #FFC107;">
                     <i class="fas fa-phone-alt"></i> <span id="phoneText">TÉLÉPHONE</span>
                 </button>
             </div>
+           <div class="features">
+    <p>
+        <i class="fas fa-map-marker-alt" style="font-size: medium; text-align: center; color: #f1c40f;"></i> 
+        Casablanca – Dar bouazza – Bouskoura – Mohammedia.
+        <div class="features" style="flex-direction: column; align-items: center; gap: 10px;">
+   
+  <a href="https://wa.me/212604203076" class="cta-button" style="padding: 10px 20px; font-size: 14px; margin-top: 0; display: inline-flex; align-items: center; gap: 8px;" aria-label="Confirmer mon créneau">
+    <i class="fab fa-whatsapp" style="font-size: 18px; color: #1b263b;"></i> CONFIRMER MON CRÉNEAU !
+</a>
+</div>
+    </p> 
+    
+    
+
+</div> <br>
+
 
             <div class="timing-options">
-                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Maintenant</div>
-                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Cette semaine</div>
-                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Plus tard</div>
+                <div class="timing-box" ><i class="fas fa-check-circle badge-icon"></i> Maintenant</div>
+                <div class="timing-box" ><i class="fas fa-check-circle badge-icon"></i> Cette semaine</div>
+                <div class="timing-box" ><i class="fas fa-check-circle badge-icon"></i> Plus tard</div>
             </div>
 
             <div class="features">
                 <p><i class="fas fa-check"></i> À partir de <span class="price">60 DH</span></p>
-                <p><i class="fas fa-check"></i> Casablanca – Dar bouazza – Bouskoura .</p>
+             
                 <p><i class="fas fa-check"></i> Sans eau • Sans déplacement • Sans contrainte</p>
             </div>
         </div>
@@ -237,22 +285,108 @@
         <p>Plus de <span class="text-yellow">1 000 clients satisfaits</span> ont fait confiance à Zéro'Eau</p>
     </section>
 
-    <section class="gallery-section">
-        <div class="gallery-grid">
+  <section class="gallery-section">
+        <div class="gallery-container" id="gallerySlider">
             <div class="gallery-card">
-                <span class="label">Avant</span>
-                <video muted loop playsinline poster="avant-poster.jpg"><source src="avant.mp4" type="video/mp4"></video>
+                <span class="label">avants</span>
+                <video muted loop playsinline autoplay poster="avant-poster.jpg">
+                    <source src="avant.mp4" type="video/mp4">
+                </video>
+            </div>
+              <div class="gallery-card">
+                <span class="label">Nettoyage Jantes</span>
+                <video muted loop playsinline autoplay poster="pendant-poster.jpg">
+                    <source src="pendant.mp4" type="video/mp4">
+                </video>
+            </div>
+
+
+
+          
+  <div class="gallery-card">
+                <span class="label">Résultat Final</span>
+                <video muted loop playsinline autoplay poster="apres-poster.jpg">
+                    <source src="apres.mp4" type="video/mp4">
+                </video>
+            </div>
+          
+
+            <div class="gallery-card">
+                <span class="label">AVANT/APRES</span>
+                <img src="590984768_17856451872575251_4056513165007141274_n.webp" alt="Nettoyage intérieur" loading="lazy">
+            </div>
+             <div class="gallery-card">
+                <span class="label">AVANT/APRES</span>
+                <img src="_MConverter.eu_Dolphin_Radar_20260120121726-8.webp" alt="Nettoyage intérieur" loading="lazy">
             </div>
             <div class="gallery-card">
-                <span class="label">Pendant</span>
-                <video muted loop playsinline poster="pendant-poster.jpg"><source src="pendant.mp4" type="video/mp4"></video>
+                <span class="label">AVANT/APRES</span>
+                <img src="599939738_17857378044575251_6341796684943300279_n.webp" alt="Nettoyage intérieur" loading="lazy">
             </div>
-            <div class="gallery-card">
-                <span class="label">Après</span>
-                <video muted loop playsinline poster="apres-poster.jpg"><source src="apres.mp4" type="video/mp4"></video>
-            </div>
+
+          
         </div>
     </section>
+    <style>/* --- Galerie Slider Moderne --- */
+        .gallery-section { 
+            padding: 40px 0; 
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 0 20px 20px 20px;
+            scrollbar-width: none; /* Cache la scrollbar sur Firefox */
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            display: none; /* Cache la scrollbar sur Chrome/Safari */
+        }
+
+        .gallery-card { 
+            position: relative; 
+            min-width: 280px; /* Largeur sur Desktop */
+            height: 500px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); 
+            background: #000; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            scroll-snap-align: center;
+            flex-shrink: 0;
+        }
+
+        .gallery-card video, .gallery-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        .gallery-card .label { 
+            position: absolute; 
+            top: 15px; 
+            left: 15px; 
+            background: rgba(255, 193, 7, 0.9); 
+            color: #000; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            z-index: 2; 
+            text-transform: uppercase; 
+        }
+
+        /* --- Ajustements Mobile --- */
+        @media (max-width: 768px) {
+            .gallery-card { 
+                min-width: 75vw; /* On voit un bout de la photo suivante */
+                height: 400px; 
+            }
+        }</style>
 
     <section class="testimonials-section">
         <h2 class="section-title">LES AVIS DE NOS <span class="text-yellow">CLIENTS</span></h2>
@@ -284,15 +418,19 @@
 
     <div class="footer-cta">
         <p>Plus de <strong>1 000 clients satisfaits</strong> ont fait confiance à Zéro'Eau</p>
-        <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-button" aria-label="Réserver maintenant sur WhatsApp">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/212604203076" class="cta-button" aria-label="Réserver maintenant sur WhatsApp">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
     </div>
+
+    <a href="https://wa.me/212604203076" class="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <div id="tarifsModal" class="modal-overlay" onclick="closeTarifs(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeTarifs(event)" aria-label="Fermer">&times;</span>
             <h3>NOS TARIFS</h3>
             <img src="tarifs.jpg" alt="Liste des Prix Zéro'Eau" class="tarif-img" loading="lazy"> <br>
-            <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-modal">COMMANDER MAINTENANT</a>
+            <a href="https://wa.me/212604203076" class="cta-modal">COMMANDER MAINTENANT</a>
         </div>
     </div>
 
@@ -310,8 +448,8 @@
             const phoneNumber = btn.getAttribute('data-phone');
             if (span.innerText === "TÉLÉPHONE") {
                 span.innerText = phoneNumber;
-                btn.style.backgroundColor = "#25D366";
-                btn.style.color = "white";
+                btn.style.backgroundColor = "#f1c40f";
+                btn.style.color = "jaune";
                 btn.setAttribute('onclick', `window.location.href='tel:${phoneNumber.replace(/\s/g, '')}'`);
             }
         }
