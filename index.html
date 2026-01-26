@@ -10,7 +10,25 @@
     <style>
         /* --- Reset global --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: #0f1c2e; color: white; }
+        body { 
+            background-color: #0f1c2e; 
+            color: white; 
+            position: relative; /* Mohim */
+        }
+
+        /* --- IMAGE D'ARRIÈRE-PLAN (PAGE KAMLA) --- */
+        .full-page-bg {
+            position: fixed; /* Bach tbqa tabta mli t-scrolli */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -999; /* Wara koulchi */
+            opacity: 0.2; /* Na9sna opacity bach matbrztch */
+            transform: scale(1.2); /* Zoom chwiya */
+            pointer-events: none; /* Bach mat9issh lclick */
+        }
 
         /* --- Header Split (25% Logo Left / 75% Text Right) --- */
         .top-header-wrapper {
@@ -18,9 +36,9 @@
             width: 100%;
             height: 60px;
             align-items: center;
+            background: rgba(15, 28, 46, 0.9); /* Zidna chwiya d lon bach tban */
         }
 
-        /* Partie 1: Le Logo (Left - 25%) */
         .top-bar-logo {
             width: 25%;
             height: 100%;
@@ -36,7 +54,6 @@
             object-fit: contain;
         }
 
-        /* Partie 2: La barre jaune (Right - 75%) */
         .top-bar-text {
             width: 75%;
             height: 100%;
@@ -65,7 +82,7 @@
         /* --- Hero Section --- */
         .hero-section { position: relative; height: 100vh; min-height: 600px; display: flex; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 28, 46, 0.7), rgba(15, 28, 46, 0.4), #1b263b); z-index: -1; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(15, 28, 46, 0.7), rgba(15, 28, 46, 0.4), rgba(15, 28, 46, 0.1)); z-index: -1; }
         .hero-content { padding: 20px; max-width: 800px; z-index: 1; margin-top: -50px; }
         
         .logo-container { display: none; } 
@@ -108,44 +125,14 @@
         .btn-action i { font-size: 1.2rem; margin-bottom: 2px; }
         .btn-action:active { transform: scale(0.95); }
 
-        /* Button Colors */
         .btn-reserver { background: linear-gradient(90deg, #FFC107, #FFB300); color: #000; box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); }
         .btn-tarifs { background: rgba(255, 255, 255, 0.1); border: 1px solid #FFC107; color: #FFC107; }
         .btn-phone { background: white; color: #0f1c2e; }
 
         /* --- Timing Boxes --- */
-        .timing-options {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 25px;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .timing-box {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.3); 
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            padding: 8px 5px;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-        
-        .badge-icon {
-            color: #25D366; 
-            font-size: 0.9rem;
-        }
+        .timing-options { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .timing-box { flex: 1; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 8px 5px; text-align: center; font-size: 0.75rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+        .badge-icon { color: #25D366; font-size: 0.9rem; }
 
         /* --- Features --- */
         .features p { margin: 8px 0; font-size: 1.1rem; font-weight: 500; }
@@ -158,18 +145,30 @@
         /* --- Galerie --- */
         .gallery-section { 
             padding: 20px; 
-            padding-bottom: 10px; /* MODIFIÉ: Na9asna l'espace thtani */
+            padding-bottom: 10px;
+            position: relative; 
+            /* Hiyedna background image mn hna hit drnaha global */
         }
-        .gallery-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+
+        .gallery-grid { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            flex-wrap: wrap;
+            position: relative; 
+            z-index: 1; 
+        }
+
         .gallery-card { position: relative; width: 280px; height: 500px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.4); background: #000; border: 1px solid rgba(255, 255, 255, 0.1); }
         .gallery-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
         .gallery-card .label { position: absolute; top: 15px; left: 15px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); color: #FFC107; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; z-index: 2; text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- Reviews --- */
         .testimonials-section { 
-            padding-top: 20px; /* MODIFIÉ: Na9asna l'espace lfo9ani */
-            padding-bottom: 50px;
-            background-color: #0f1c2e; 
+            padding-top: 20px; 
+            padding-bottom: 50px; 
+            /* Rina background transparent bach tban tswira */
+            background-color: transparent; 
             text-align: center; 
             overflow: hidden; 
         }
@@ -178,34 +177,21 @@
         .reviews-track { display: flex; gap: 20px; width: max-content; animation: scroll 30s linear infinite; }
         .reviews-track:hover { animation-play-state: paused; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .review-card { min-width: 300px; max-width: 300px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 25px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; }
+        .review-card { min-width: 300px; max-width: 300px; background: rgba(15, 28, 46, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 25px; text-align: left; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(5px); }
         .stars { color: #FFC107; margin-bottom: 15px; }
         .review-text { font-size: 0.95rem; line-height: 1.5; color: #e0e0e0; font-style: italic; margin-bottom: 20px; }
         .client-info { display: flex; align-items: center; gap: 10px; margin-top: auto; }
         .avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #FFC107, #FF9800); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; }
 
         /* --- Footer CTA --- */
-        .footer-cta { text-align: center; padding: 30px 20px; background: linear-gradient(to top, #0f1c2e, transparent); }
+        .footer-cta { text-align: center; padding: 30px 20px; background: linear-gradient(to top, rgba(15,28,46,0.9), transparent); }
         .cta-button { display: inline-block; background: linear-gradient(90deg, #FFC107, #FFB300); color: #000; padding: 15px 30px; font-weight: 700; text-decoration: none; border-radius: 5px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); }
 
         /* --- Modal Popup --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(5px); }
         .modal-content { background: #1b263b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; text-align: center; position: relative; border: 1px solid #FFC107; animation: zoomIn 0.3s ease; }
         .modal-content h3 { color: #FFC107; margin-bottom: 15px; }
-        
-        .tarif-img { 
-            width: auto;          
-            max-width: 100%;      
-            height: auto;         
-            max-height: 300px;    
-            border-radius: 8px;
-            margin-bottom: 15px;
-            object-fit: contain;
-            display: block;       
-            margin-left: auto;    
-            margin-right: auto;   
-        }
-
+        .tarif-img { width: auto; max-width: 100%; height: auto; max-height: 300px; border-radius: 8px; margin-bottom: 15px; object-fit: contain; display: block; margin-left: auto; margin-right: auto; }
         .close-btn { position: absolute; top: 10px; right: 15px; color: white; font-size: 2rem; cursor: pointer; }
         .cta-modal { display: block; background: #FFC107; color: black; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; }
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -214,41 +200,31 @@
         @media (max-width: 768px) {
             h1 { font-size: 1.5rem; }
             .hero-section { height: auto; padding-top: 50px; padding-bottom: 50px; }
-
-            /* Buttons small on mobile */
             .action-buttons { gap: 6px; }
             .btn-action { padding: 8px 2px; font-size: 9px; height: auto; }
             .btn-action i { font-size: 14px; }
-            
-            /* Timing Boxes Mobile */
             .timing-options { gap: 6px; }
             .timing-box { font-size: 0.65rem; padding: 6px 2px; }
-
-            /* 3 Videos in 1 Line */
             .gallery-grid { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; gap: 5px; justify-content: center; }
             .gallery-card { width: 32% !important; max-width: none; height: 200px; flex-shrink: 0; }
             .gallery-card .label { font-size: 0.6rem; padding: 4px 8px; top: 8px; left: 8px; }
-
             .reviews-track { animation: scroll 20s linear infinite; }
             .review-card { min-width: 280px; }
-
-            /* Top Bar Mobile Tweaks */
             .top-bar-text { font-size: 8px; }
         }
     </style>
 </head>
 <body>
 
+    <img src="Gemini_Generated_Image_mtpgk2mtpgk2mtpg.webp" alt="Background Texture" class="full-page-bg">
+
     <div class="top-header-wrapper">
-        
         <div class="top-bar-logo">
             <img src="photo_5992237543186959243_y-removebg-preview-removebg-preview.webp" alt="Logo Zéro'Eau">
         </div>
-
         <div class="top-bar-text">
-            <p>SERVICE À DOMICILE | <span>09:15:29</span></p>
+            <p>+3500 Lavages effectués | +50000 Litres d'eau économisés | 99% Clients satisfaits  </span></p>
         </div>
-
     </div>
 
     <header class="hero-section">
@@ -256,40 +232,25 @@
         <div class="overlay"></div>
 
         <div class="hero-content">
-            
-            <h1>LAVAGE AUTO<br>SANS EAU, <span class="text-yellow">CHEZ VOUS.</span></h1>
+            <h1>LAVAGE AUTO<br> <span class="text-yellow"> SANS EAU,</span> CHEZ VOUS.</h1>
             <p class="sub-text">Un lavage professionnel, sans une goutte d'eau,<br>directement là où votre voiture est stationnée.</p>
 
             <div class="action-buttons">
                 <a href="https://api.whatsapp.com/send?phone=212604203076" class="btn-action btn-reserver">
-                    <i class="fas fa-calendar-check"></i> 
-                    <span>RÉSERVER</span>
+                    <i class="fas fa-calendar-check"></i> <span>RÉSERVER</span>
                 </a>
-
                 <button onclick="openTarifs()" class="btn-action btn-tarifs">
-                    <i class="fas fa-tags"></i> 
-                    <span>NOS TARIFS</span>
+                    <i class="fas fa-tags"></i> <span>NOS TARIFS</span>
                 </button>
-
                 <button onclick="togglePhone(this)" class="btn-action btn-phone" data-phone="06 04 20 30 76">
-                    <i class="fas fa-phone-alt"></i> 
-                    <span id="phoneText">TÉLÉPHONE</span>
+                    <i class="fas fa-phone-alt"></i> <span id="phoneText">TÉLÉPHONE</span>
                 </button>
             </div>
 
             <div class="timing-options">
-                <div class="timing-box">
-                    <i class="fas fa-check-circle badge-icon"></i>
-                    Maintenant
-                </div>
-                <div class="timing-box">
-                    <i class="fas fa-check-circle badge-icon"></i>
-                    Cette semaine
-                </div>
-                <div class="timing-box">
-                    <i class="fas fa-check-circle badge-icon"></i>
-                    Plus tard
-                </div>
+                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Maintenant</div>
+                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Cette semaine</div>
+                <div class="timing-box"><i class="fas fa-check-circle badge-icon"></i> Plus tard</div>
             </div>
 
             <div class="features">
@@ -308,21 +269,15 @@
         <div class="gallery-grid">
             <div class="gallery-card">
                 <span class="label">Avant</span>
-                <video autoplay muted loop playsinline>
-                    <source src="avant.mp4" type="video/mp4">
-                </video>
+                <video autoplay muted loop playsinline><source src="avant.mp4" type="video/mp4"></video>
             </div>
             <div class="gallery-card">
                 <span class="label">Pendant</span>
-                <video autoplay muted loop playsinline>
-                    <source src="pendant.mp4" type="video/mp4">
-                </video>
+                <video autoplay muted loop playsinline><source src="pendant.mp4" type="video/mp4"></video>
             </div>
             <div class="gallery-card">
                 <span class="label">Après</span>
-                <video autoplay muted loop playsinline>
-                    <source src="apres.mp4" type="video/mp4">
-                </video>
+                <video autoplay muted loop playsinline><source src="apres.mp4" type="video/mp4"></video>
             </div>
         </div>
     </section>
@@ -367,7 +322,7 @@
 
     <div class="footer-cta">
         <p>Plus de <strong>1 000 clients satisfaits</strong> ont fait confiance à Zéro'Eau</p>
-        <a href="#" class="cta-button">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
+        <a href="https://api.whatsapp.com/send?phone=212604203076" class="cta-button">RÉSERVER MAINTENANT <i class="fab fa-whatsapp"></i></a>
     </div>
 
     <div id="tarifsModal" class="modal-overlay" onclick="closeTarifs(event)">
@@ -380,20 +335,11 @@
     </div>
 
     <script>
-        function openTarifs() {
-            document.getElementById('tarifsModal').style.display = 'flex';
-        }
-
-        function closeTarifs(e) {
-            if (e.target === document.getElementById('tarifsModal') || e.target.classList.contains('close-btn')) {
-                document.getElementById('tarifsModal').style.display = 'none';
-            }
-        }
-
+        function openTarifs() { document.getElementById('tarifsModal').style.display = 'flex'; }
+        function closeTarifs(e) { if (e.target === document.getElementById('tarifsModal') || e.target.classList.contains('close-btn')) { document.getElementById('tarifsModal').style.display = 'none'; } }
         function togglePhone(btn) {
             const span = document.getElementById('phoneText');
             const phoneNumber = btn.getAttribute('data-phone');
-            
             if (span.innerText === "TÉLÉPHONE") {
                 span.innerText = phoneNumber;
                 btn.style.backgroundColor = "#25D366";
