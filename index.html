@@ -288,13 +288,13 @@
   <section class="gallery-section">
         <div class="gallery-container" id="gallerySlider">
             <div class="gallery-card">
-                <span class="label">avants</span>
+                <span class="label">Avants</span>
                 <video muted loop playsinline autoplay poster="avant-poster.jpg">
                     <source src="avant.mp4" type="video/mp4">
                 </video>
             </div>
               <div class="gallery-card">
-                <span class="label">Nettoyage Jantes</span>
+                <span class="label">Pendant</span>
                 <video muted loop playsinline autoplay poster="pendant-poster.jpg">
                     <source src="pendant.mp4" type="video/mp4">
                 </video>
@@ -327,7 +327,36 @@
           
         </div>
     </section>
-    <style>/* --- Galerie Slider Moderne --- */
+    <style>
+    /* --- Overlay sombre sur les cartes --- */
+.gallery-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient : transparent en haut, sombre en bas */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* On s'assure que le texte (label) passe au-dessus de l'ombre */
+.gallery-card .label {
+    z-index: 2; 
+    background: rgba(255, 193, 7, 0.95); /* Jaune un peu plus vif pour trancher */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Optionnel : Assombrir encore plus au survol sur PC */
+.gallery-card:hover::after {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+    transition: background 0.3s ease;
+}
+    
+    
+    /* --- Galerie Slider Moderne --- */
         .gallery-section { 
             padding: 40px 0; 
             overflow: hidden;
@@ -383,8 +412,8 @@
         /* --- Ajustements Mobile --- */
         @media (max-width: 768px) {
             .gallery-card { 
-                min-width: 75vw; /* On voit un bout de la photo suivante */
-                height: 400px; 
+                min-width: 60vw; /* On voit un bout de la photo suivante */
+                height: 250px; 
             }
         }</style>
 
