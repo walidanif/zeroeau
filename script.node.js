@@ -21,7 +21,7 @@ const mailOptions = {
     <h2>🚗 Zero Eau</h2>
     <p>Lavage auto sans eau chez vous.</p>
     <p><b>À partir de 60DH</b></p>
-    <a href="https://wa.me/2126XXXXXXX">Réserver sur WhatsApp</a>
+    <a href="https://wa.me/212604203076">Réserver sur WhatsApp</a>
   `
 };
 

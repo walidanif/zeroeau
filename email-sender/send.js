@@ -8,9 +8,13 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: "walidanif3@gmail.com",
     pass: "" 
+  },
 });
 
-const clients = ["walidanif789456@gmail.com"];
+const clients = [
+  "walidanif2@gmail.com",
+  "walidanif3@gmail.com"
+];
 
 const htmlContent = `
 <!DOCTYPE html>
@@ -24,19 +28,19 @@ const htmlContent = `
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #1b263b;">
       
       <tr>
-        <td align="center" style="padding: 10px 20px 0px 20px;">
-          <img src="cid:logo_zero_eau" alt="Zero Eau" style="width: 180px; height: auto; display: block; margin: 0;" />
+        <td align="center" style="padding: 20px 20px 0px 20px;">
+          <img src="cid:logo_zero_eau" alt="Zero Eau" style="width: 180px; height: auto; display: block; margin: 0; padding: 0;" />
         </td>
       </tr>
 
       <tr>
         <td align="center" style="padding: 0px 40px 20px 40px; color: #ffffff; font-family: Helvetica, Arial, sans-serif;">
-          <h2 style="color: #f1c40f !important; margin: 5px 0 10px 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px;">
+          <h2 style="color: #f1c40f !important; margin: -15px 0 10px 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.2;">
             Lavage auto écologique
           </h2>
           <p style="color: #ffffff !important; font-size: 16px; line-height: 1.4; margin: 0;">
             Bonjour, <br>
-            Plus besoin de vous déplacer ! Nous venons chez vous ou au bureau avec notre technique <b>sans eau</b>.
+            Plus besoin de vous déplacer ! Nous venons chez vous ou au bureau avec notre technique <b style="color: #f1c40f !important;">SANS EAU</b>.
           </p>
         </td>
       </tr>
@@ -61,14 +65,28 @@ const htmlContent = `
       <tr>
         <td align="center" style="padding: 30px;">
           <a href="https://wa.me/212604203076" style="color: #f1c40f !important; border: 2px solid #f1c40f; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 50px; font-size: 17px; display: inline-block;">
-            Réserver par WhatsApp 📲
+            Réserver par WhatsApp maintenant !
           </a>
         </td>
       </tr>
 
       <tr>
-        <td align="center" style="padding: 20px; border-top: 1px solid #1b263b; color: #f1c40f; font-family: sans-serif; font-size: 12px;">
-          <p style="margin: 5px 0;"><strong>Zero Eau</strong> • Casablanca - Mohammedia - Bouskoura</p>
+        <td align="center" style="padding: 0px 0px 20px 0px;">
+            <a href="https://www.facebook.com/zeroeauwash" style="text-decoration: none; margin: 0 8px;">
+                <img src="cid:icon_fb" alt="Facebook" width="32" height="32" style="display: inline-block;" />
+            </a>
+            <a href="https://www.instagram.com/zeroeau/" style="text-decoration: none; margin: 0 8px;">
+                <img src="cid:icon_insta" alt="Instagram" width="32" height="32" style="display: inline-block;" />
+            </a>
+            <a href="https://www.tiktok.com/@zeroeau0" style="text-decoration: none; margin: 0 8px;">
+                <img src="cid:icon_tiktok" alt="TikTok" width="32" height="32" style="display: inline-block;" />
+            </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td align="center" style="padding: 20px; border-top: 1px solid #f1c40f; color: #f1c40f; font-family: sans-serif; font-size: 12px;">
+          <p style="margin: 5px 0;"><strong>Zero Eau</strong> • Casablanca - Mohammedia - Bouskoura - Dar bouazza </p>
         </td>
       </tr>
 
@@ -88,6 +106,22 @@ const mailOptions = {
       filename: 'logo.png',        
       path: './logo.png',          
       cid: 'logo_zero_eau'         
+    },
+    // Zid had les icônes f dossier dyalek:
+    {
+        filename: 'fb.png',
+        path: './fb.png',
+        cid: 'icon_fb'
+    },
+    {
+        filename: 'insta.png',
+        path: './insta.png',
+        cid: 'icon_insta'
+    },
+    {
+        filename: 'tiktok.png',
+        path: './tiktok.png',
+        cid: 'icon_tiktok'
     }
   ]
 };

@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             position: relative;
         }
 
-        /* --- IMAGE D'ARRIÈRE-PLAN (PAGE KAMLA) --- */
+     
         .full-page-bg {
             position: fixed;
             top: 0;
@@ -56,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             pointer-events: none;
         }
 
-        /* --- Header Split --- */
+
         .top-header-wrapper {
             display: flex;
             width: 100%;
@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding: 0 10px;
             clip-path: polygon(20px 0, 100% 0, 100% 100%, 0% 100%);
         }
-        /* --- Header Split --- */
+
         .top-header-wrapper {
             display: flex;
             width: 100%;
@@ -105,12 +105,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background: rgba(15, 28, 46, 0.9); /* Ta couleur actuelle */
             
             /* --- AJOUTS POUR LE FIXER --- */
-            position: fixed; /* Rend la barre fixe */
-            top: 0;          /* La colle tout en haut */
-            left: 0;         /* La colle à gauche */
-            z-index: 999;    /* S'assure qu'elle reste au-dessus des images/textes */
-            backdrop-filter: blur(5px); /* Optionnel : Ajoute un petit flou derrière pour le style */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Optionnel : Ajoute une petite ombre */
+            position: fixed; 
+            top: 0;         
+            left: 0;        
+            z-index: 999;   
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3); 
         }
 
         /* --- Hero Section --- */
@@ -123,7 +123,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .text-yellow { color: #FFC107; }
         .sub-text { font-size: 1rem; margin-bottom: 30px; color: #e0e0e0; }
 
-        /* --- Action Buttons --- */
+      
         .action-buttons {
             display: flex;
             gap: 10px;              
@@ -172,12 +172,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .features i { color: #FFC107; margin-right: 8px; }
         .price { color: #FFC107; font-weight: 700; }
 
-        /* --- Social Proof --- */
         .social-proof { text-align: center; padding: 20px; font-size: 1.1rem; font-weight: 600; }
 
-        /* --- Galerie --- */
-       
-        /* --- Reviews --- */
+  
         .testimonials-section { padding-top: 20px; padding-bottom: 50px; background-color: transparent; text-align: center; overflow: hidden; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 40px; color: white; text-transform: uppercase; padding: 0 20px; }
         .reviews-container { width: 100%; position: relative; overflow: hidden; }
@@ -203,7 +200,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .cta-modal { display: block; background: #FFC107; color: black; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; }
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        /* --- WHATSAPP FLOATING BUTTON STYLE --- */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -370,7 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
     <style>
-    /* --- Overlay sombre sur les cartes --- */
+
 .gallery-card::after {
     content: "";
     position: absolute;
@@ -378,27 +374,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     left: 0;
     width: 100%;
     height: 100%;
-    /* Gradient : transparent en haut, sombre en bas */
+
     background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
     z-index: 1;
     pointer-events: none;
 }
 
-/* On s'assure que le texte (label) passe au-dessus de l'ombre */
+
 .gallery-card .label {
     z-index: 2; 
     background: rgba(255, 193, 7, 0.95); /* Jaune un peu plus vif pour trancher */
     box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-/* Optionnel : Assombrir encore plus au survol sur PC */
+
 .gallery-card:hover::after {
     background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
     transition: background 0.3s ease;
 }
     
     
-    /* --- Galerie Slider Moderne --- */
+
         .gallery-section { 
             padding: 40px 0; 
             overflow: hidden;
@@ -451,7 +447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             text-transform: uppercase; 
         }
 
-        /* --- Ajustements Mobile --- */
+   
         @media (max-width: 768px) {
             .gallery-card { 
                 min-width: 40vw; /* On voit un bout de la photo suivante */
@@ -528,7 +524,7 @@ dita wine</span></div>
     </div>
 
     <script>
-        // Auto-play videos when in view for performance
+
         const videos = document.querySelectorAll('video');
         videos.forEach(video => {
             video.play().catch(() => { /* Handle auto-play block */ });
