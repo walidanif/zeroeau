@@ -1,0 +1,15 @@
+{
+  "name": "landing-zero-eau",
+  "version": "1.0.0",
+  "description": "UI/UX & Design Portfolio — Walid Anif\r Welcome to my design portfolio.\r This repository showcases a variety of creative work including mobile app UI/UX, website layouts, marketing visuals, branding elements and mockups.",
+  "main": "script.node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemailer": "^7.0.13"
+  }
+}
