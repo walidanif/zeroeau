@@ -1,36 +1,48 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-// 1. CONFIGURATION
+// ==========================================
+// 1. CONFIGURATION (IONOS)
+// ==========================================
 const CONFIG = {
-  auth: {
-    user: "walidanif3@gmail.com",
-    pass: "pank hsbt npug ucnv" // App Password
+  smtp: {
+    host: "smtp.ionos.com",   // <-- Host officiel IONOS
+    port: 465,                // <-- Port SSL
+    secure: true,             // <-- True avec port 465
+    auth: {
+      user: "contact@zeroeau.com", // <-- Email dyalek
+      pass: "Mot_De_Passe_Dyal_Email_Hna" // <-- Hna kteb l Password bach katdakhel l email
+    }
   },
   whatsapp: "212604203076",
   brand: "Zero Eau",
-  commission: "20%", // Ghadi t-bban f l-email
-  location: "Casablanca - Mohammedia - Bouskoura"
+  location: "Casablanca - Mohammedia - Bouskoura - Dar Bouazza"
 };
 
-// 2. LISTE DES PARTENAIRES (Hotels & Restaurants)
+// ==========================================
+// 2. LISTE DES PARTENAIRES (B2B)
+// ==========================================
 const partners = [
   "walidanif3@gmail.com",
 
 ];
 
-// 3. TRANSPORTER (Optimized)
+// ==========================================
+// 3. TRANSPORTER INITIALIZATION
+// ==========================================
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: CONFIG.auth,
-  pool: true, 
+  host: CONFIG.smtp.host,
+  port: CONFIG.smtp.port,
+  secure: CONFIG.smtp.secure,
+  auth: CONFIG.smtp.auth,
+  pool: true, // Garder la connexion ouverte
   maxConnections: 3,
   connectionTimeout: 10000
 });
 
-// 4. TEMPLATE HTML
+// ==========================================
+// 4. HTML CONTENT
+// ==========================================
 const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -41,34 +53,34 @@ const htmlContent = `
 </head>
 <body style="margin: 0; padding: 0; background-color: #1b263b; font-family: Arial, sans-serif;">
   <center>
-    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #1b263b;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px; background-color: #1b263b; border: 1px solid rgba(241, 196, 15, 0.1);">
       
       <tr>
-        <td align="center" style="padding: 30px 20px 10px 20px;">
-          <img src="cid:logo_zero_eau" alt="${CONFIG.brand}" style="width: 170px; height: auto; display: block;" />
+        <td align="center" style="padding: 25px 20px 10px 20px;">
+          <img src="cid:logo_zero_eau" alt="Zero Eau" style="width: 140px; height: auto; display: block;" />
         </td>
       </tr>
 
       <tr>
-        <td align="center" style="padding: 0px 40px 20px 40px; color: #ffffff;">
-          <h1 style="color: #f1c40f !important; margin: 0 0 15px 0; font-size: 22px; text-transform: uppercase;">
+        <td align="center" style="padding: 0px 40px 15px 40px; color: #ffffff;">
+          <h1 style="color: #f1c40f !important; margin: 0 0 10px 0; font-size: 25px; text-transform: uppercase; letter-spacing: 1px;">
             Partenariat Stratégique
           </h1>
-          <p style="color: #ffffff !important; font-size: 16px; line-height: 1.6; margin: 0; text-align: left;">
-            Bonjour,<br><br>
-            Offrez à vos clients un service de lavage auto <b>écologique et sans eau</b> directement sur votre parking, tout en générant un revenu supplémentaire pour votre établissement.
+          <p style="color: #ffffff !important; font-size: 14px; line-height: 1.4; margin: 0;">
+            Bonjour, <br>
+            Optimisez votre parking en offrant à vos clients un service de lavage auto <b>écologique et <span style="color: #f1c40f !important;">sans eau</span> </b>, tout en générant un revenu supplémentaire.
           </p>
         </td>
       </tr>
 
       <tr>
-        <td align="center" style="padding: 0 40px;">
-          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #2c3e50; border: 2px dashed #f1c40f; border-radius: 12px;">
+        <td align="center" style="padding: 0 50px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: rgba(44, 62, 80, 0.5); border: 2px dashed #f1c40f; border-radius: 10px;">
             <tr>
-              <td align="center" style="padding: 20px;">
-                <p style="margin: 0; color: #f1c40f; font-size: 18px; font-weight: bold;">
-                  Bénéficiez de <span style="font-size: 32px;">${CONFIG.commission}</span><br>
-                  <span style="font-size: 14px; color: #ffffff; font-weight: normal;">sur chaque prestation effectuée chez vous.</span>
+              <td align="center" style="padding: 15px;">
+                <p style="margin: 0; color: #f1c40f; font-size: 20px; font-weight: bold;">
+                  Bénéficiez <span style="font-size: 24px;">d'une commission</span><br>
+                  <span style="font-size: 13px; color: #ffffff; font-weight: normal;">Sur chaque prestation effectuée chez vous.</span>
                 </p>
               </td>
             </tr>
@@ -77,46 +89,42 @@ const htmlContent = `
       </tr>
 
       <tr>
-        <td style="padding: 30px 40px; color: #ffffff; font-size: 15px;">
-          <p style="margin-bottom: 10px;">✅ <b>Zéro Logistique :</b> Nos équipes sont autonomes.</p>
-          <p style="margin-bottom: 10px;">✅ <b>Prestige :</b> Un service premium pour vos clients VIP.</p>
-          <p style="margin-bottom: 10px;">✅ <b>Écologie :</b> Aucun résidu d'eau ou de produits chimiques.</p>
+        <td align="center" style="padding: 20px 40px;">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color: #ffffff; font-size: 13px; line-height: 1.8;">
+            <tr><td align="left">✅ <b>Zéro Logistique :</b> Nos équipes sont 100% autonomes.</td></tr>
+            <tr><td align="left">✅ <b>Prestige :</b> Un service premium pour vos clients VIP.</td></tr>
+            <tr><td align="left">✅ <b>Écologie :</b> Aucun résidu d'eau ou de produits chimiques.</td></tr>
+          </table>
         </td>
       </tr>
 
       <tr>
-        <td align="center" style="padding: 10px 40px 40px 40px;">
-          <a href="https://wa.me/${CONFIG.whatsapp}" style="background-color: #f1c40f; color: #1b263b; padding: 18px 30px; text-decoration: none; font-weight: 900; border-radius: 8px; font-size: 16px; display: inline-block; text-transform: uppercase;">
+        <td align="center" style="padding: 0px 40px 25px 40px;">
+          <a href="https://wa.me/${CONFIG.whatsapp}" style="background-color: #f1c40f; color: #1b263b; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 14px; display: inline-block; text-transform: uppercase;">
             Devenir Partenaire Officiel 
           </a>
         </td>
       </tr>
- <tr>
-        <td align="center" style="padding: 30px 0 10px 0;">
-            <p style="color: #ffffff; font-size: 12px; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 1px;">Suivez-nous sur</p>
+
+      <tr>
+        <td align="center" style="padding: 15px 0 10px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+            <p style="color: #ffffff; font-size: 10px; margin: 0 0 10px 0; text-transform: uppercase; opacity: 0.8;">Suivez-nous sur</p>
             <table border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="padding: 0 10px;">
-                  <a href="https://www.facebook.com/zeroeauwash"><img src="https://img.icons8.com/ios-filled/50/f1c40f/facebook-new.png" width="30" height="30"></a>
-                </td>
-                <td style="padding: 0 10px;">
-                  <a href="https://www.instagram.com/zeroeau.wash/"><img src="https://img.icons8.com/ios-filled/50/f1c40f/instagram-new.png" width="30" height="30"></a>
-                </td>
-                <td style="padding: 0 10px;">
-                  <a href="https://www.tiktok.com/@zeroeau0"><img src="https://img.icons8.com/ios-filled/50/f1c40f/tiktok.png" width="30" height="30"></a>
-                </td>
+                <td style="padding: 0 8px;"><a href="#"><img src="https://img.icons8.com/ios-filled/50/f1c40f/facebook-new.png" width="22"></a></td>
+                <td style="padding: 0 8px;"><a href="#"><img src="https://img.icons8.com/ios-filled/50/f1c40f/instagram-new.png" width="22"></a></td>
+                <td style="padding: 0 8px;"><a href="#"><img src="https://img.icons8.com/ios-filled/50/f1c40f/tiktok.png" width="22"></a></td>
               </tr>
             </table>
         </td>
       </tr>
 
-     
       <tr>
-        <td align="center" style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #f1c40f; font-size: 11px;">
-          <p style="margin: 5px 0;"><strong>${CONFIG.brand}</strong> • ${CONFIG.location}</p>
+        <td align="center" style="padding: 10px 20px 20px 20px; color: #f1c40f; font-size: 10px; opacity: 0.7;">
+          Zero Eau • ${CONFIG.location}<br>
+          Contactez-nous: <a href="mailto:${CONFIG.smtp.auth.user}" style="color: #f1c40f; text-decoration: none;">${CONFIG.smtp.auth.user}</a>
         </td>
       </tr>
-      
 
     </table>
   </center>
@@ -124,32 +132,53 @@ const htmlContent = `
 </html>
 `;
 
-// 5. ENVOI
+// ==========================================
+// 5. LOGIQUE D'ENVOI (PROFESSIONAL LOOP)
+// ==========================================
 async function sendB2B() {
-  console.log("🚀 Lancement de l'envoi Partenaires...");
+  console.log(`🚀 Lancement de la campagne pour ${partners.length} partenaires...`);
   
-  const mailOptions = {
-    from: `"${CONFIG.brand} - Partenariats" <${CONFIG.auth.user}>`,
-    bcc: partners,
-    subject: `🤝 Proposition de Partenariat : Gagnez ${CONFIG.commission} par lavage`,
-    html: htmlContent,
-    attachments: [{
-      filename: 'logo.png',
-      path: path.join(__dirname, 'logo.png'),
-      cid: 'logo_zero_eau'
-    }]
-  };
-
+  // Test connexion
   try {
     await transporter.verify();
-    const info = await transporter.sendMail(mailOptions);
-    console.log("✅ Campagne envoyée avec succès !");
-    console.log("ID Message:", info.messageId);
+    console.log("✅ Connexion SMTP IONOS établie.");
   } catch (err) {
-    console.error("❌ Erreur:", err.message);
-  } finally {
-    transporter.close();
+    console.error("❌ Erreur de connexion SMTP:", err.message);
+    return;
   }
+
+  let success = 0;
+
+  // Boucle 3la les clients wahed b wahed
+  for (const clientEmail of partners) {
+    const mailOptions = {
+      from: `"${CONFIG.brand} - Partenariats" <${CONFIG.smtp.auth.user}>`,
+      to: clientEmail, // <--- Envoi direct (machi BCC)
+      subject: `Proposition de Partenariat : Gagnez 20% par lavage`,
+      html: htmlContent,
+      attachments: [{
+        filename: 'logo.png',
+        path: path.join(__dirname, 'logo.png'),
+        cid: 'logo_zero_eau'
+      }]
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log(`✅ Envoyé avec succès à : ${clientEmail}`);
+      success++;
+      
+      // Pause sghira bach mayblockikch IONOS (1 seconde)
+      await new Promise(r => setTimeout(r, 1000));
+
+    } catch (err) {
+      console.error(`❌ Erreur pour ${clientEmail}:`, err.message);
+    }
+  }
+
+  console.log("-----------------------------------");
+  console.log(`🏁 Fin de l'envoi. Total succès: ${success}/${partners.length}`);
+  transporter.close();
 }
 
 sendB2B();
