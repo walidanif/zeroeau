@@ -1,48 +1,39 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 
-// ==========================================
-// 1. CONFIGURATION (IONOS)
-// ==========================================
 const CONFIG = {
   smtp: {
-    host: "smtp.ionos.com",   // <-- Host officiel IONOS
-    port: 465,                // <-- Port SSL
-    secure: true,             // <-- True avec port 465
+    host: "smtp.ionos.com",   
+    port: 465,                
+    secure: true,          
     auth: {
-      user: "contact@zeroeau.com", // <-- Email dyalek
-      pass: "Mot_De_Passe_Dyal_Email_Hna" // <-- Hna kteb l Password bach katdakhel l email
+      user: "contact@zeroeau.com", 
+      pass: "Mot_De_Passe_Dyal_Email_Hna"
     }
   },
-  whatsapp: "212604203076",
+  whatsapp: "+212604203076",
   brand: "Zero Eau",
   location: "Casablanca - Mohammedia - Bouskoura - Dar Bouazza"
 };
 
-// ==========================================
-// 2. LISTE DES PARTENAIRES (B2B)
-// ==========================================
+
 const partners = [
   "walidanif3@gmail.com",
 
 ];
 
-// ==========================================
-// 3. TRANSPORTER INITIALIZATION
-// ==========================================
+
 const transporter = nodemailer.createTransport({
   host: CONFIG.smtp.host,
   port: CONFIG.smtp.port,
   secure: CONFIG.smtp.secure,
   auth: CONFIG.smtp.auth,
-  pool: true, // Garder la connexion ouverte
+  pool: true, 
   maxConnections: 3,
   connectionTimeout: 10000
 });
 
-// ==========================================
-// 4. HTML CONTENT
-// ==========================================
+
 const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -100,7 +91,7 @@ const htmlContent = `
 
       <tr>
         <td align="center" style="padding: 0px 40px 25px 40px;">
-          <a href="https://wa.me/${CONFIG.whatsapp}" style="background-color: #f1c40f; color: #1b263b; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 14px; display: inline-block; text-transform: uppercase;">
+          <a href="https://wash.zeroeau.com/partenaire" style="background-color: #f1c40f; color: #1b263b; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 6px; font-size: 14px; display: inline-block; text-transform: uppercase;">
             Devenir Partenaire Officiel 
           </a>
         </td>
@@ -132,13 +123,11 @@ const htmlContent = `
 </html>
 `;
 
-// ==========================================
-// 5. LOGIQUE D'ENVOI (PROFESSIONAL LOOP)
-// ==========================================
+
 async function sendB2B() {
   console.log(`🚀 Lancement de la campagne pour ${partners.length} partenaires...`);
   
-  // Test connexion
+
   try {
     await transporter.verify();
     console.log("✅ Connexion SMTP IONOS établie.");
@@ -149,12 +138,12 @@ async function sendB2B() {
 
   let success = 0;
 
-  // Boucle 3la les clients wahed b wahed
+
   for (const clientEmail of partners) {
     const mailOptions = {
       from: `"${CONFIG.brand} - Partenariats" <${CONFIG.smtp.auth.user}>`,
       to: clientEmail, // <--- Envoi direct (machi BCC)
-      subject: `Proposition de Partenariat : Gagnez 20% par lavage`,
+      subject: `Proposition de Partenariat `,
       html: htmlContent,
       attachments: [{
         filename: 'logo.png',
@@ -168,7 +157,7 @@ async function sendB2B() {
       console.log(`✅ Envoyé avec succès à : ${clientEmail}`);
       success++;
       
-      // Pause sghira bach mayblockikch IONOS (1 seconde)
+      
       await new Promise(r => setTimeout(r, 1000));
 
     } catch (err) {
@@ -180,5 +169,4 @@ async function sendB2B() {
   console.log(`🏁 Fin de l'envoi. Total succès: ${success}/${partners.length}`);
   transporter.close();
 }
-
 sendB2B();
