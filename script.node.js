@@ -1,18 +1,15 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
 
+
 const CONFIG = {
-  smtp: {
-    host: "smtp.ionos.com",   
-    port: 465,                
-    secure: true,          
-    auth: {
-      user: "contact@zeroeau.com", 
-      pass: "Mot_De_Passe_Dyal_Email_Hna"
-    }
+  auth: {
+    user: "walidanif3@gmail.com",
+    pass: "pank hsbt npug ucnv" // App Password
   },
-  whatsapp: "+212604203076",
+  whatsapp: "212604203076",
   brand: "Zero Eau",
+  commission: "20%", 
   location: "Casablanca - Mohammedia - Bouskoura - Dar Bouazza"
 };
 
@@ -24,15 +21,14 @@ const partners = [
 
 
 const transporter = nodemailer.createTransport({
-  host: CONFIG.smtp.host,
-  port: CONFIG.smtp.port,
-  secure: CONFIG.smtp.secure,
-  auth: CONFIG.smtp.auth,
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: CONFIG.auth,
   pool: true, 
   maxConnections: 3,
   connectionTimeout: 10000
 });
-
 
 const htmlContent = `
 <!DOCTYPE html>
@@ -47,7 +43,7 @@ const htmlContent = `
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 550px; background-color: #1b263b; border: 1px solid rgba(241, 196, 15, 0.1);">
       
       <tr>
-        <td align="center" style="padding: 25px 20px 10px 20px;">
+        <td align="center" style="padding: 20px 20px 10px 20px;">
           <img src="cid:logo_zero_eau" alt="Zero Eau" style="width: 140px; height: auto; display: block;" />
         </td>
       </tr>
@@ -69,9 +65,10 @@ const htmlContent = `
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: rgba(44, 62, 80, 0.5); border: 2px dashed #f1c40f; border-radius: 10px;">
             <tr>
               <td align="center" style="padding: 15px;">
-                <p style="margin: 0; color: #f1c40f; font-size: 20px; font-weight: bold;">
-                  Bénéficiez <span style="font-size: 24px;">d'une commission</span><br>
-                  <span style="font-size: 13px; color: #ffffff; font-weight: normal;">Sur chaque prestation effectuée chez vous.</span>
+                <p style="margin: 0; color: #f1c40f; font-size: 28px; font-weight: bold;">
+                  Bénéficiez de <span style="font-size: 28px;"> d'une commission sur chaque lavage</span><br>
+                
+                  <span style="font-size: 13px; color: #ffffff; font-weight: normal;">Sur Chaque Prestation Effectuée Chez Vous.</span>
                 </p>
               </td>
             </tr>
@@ -112,8 +109,8 @@ const htmlContent = `
 
       <tr>
         <td align="center" style="padding: 10px 20px 20px 20px; color: #f1c40f; font-size: 10px; opacity: 0.7;">
-          Zero Eau • ${CONFIG.location}<br>
-          Contactez-nous: <a href="mailto:${CONFIG.smtp.auth.user}" style="color: #f1c40f; text-decoration: none;">${CONFIG.smtp.auth.user}</a>
+          Zero Eau • Casablanca - Mohammedia - Bouskoura - Dar Bouazza<br>
+          Contactez-nous: <a href="mailto:contact@zeroeau.ma" style="color: #f1c40f; text-decoration: none;">contact@zeroeau.ma</a>
         </td>
       </tr>
 
@@ -125,48 +122,30 @@ const htmlContent = `
 
 
 async function sendB2B() {
-  console.log(`🚀 Lancement de la campagne pour ${partners.length} partenaires...`);
+  console.log("🚀 Lancement de l'envoi Partenaires...");
   
+  const mailOptions = {
+    from: `"${CONFIG.brand} - Partenariats" <${CONFIG.auth.user}>`,
+    bcc: partners,
+    subject: `Proposition de Partenariat : Gagnez ${CONFIG.commission} par lavage`,
+    html: htmlContent,
+    attachments: [{
+      filename: 'logo.png',
+      path: path.join(__dirname, 'logo.png'),
+      cid: 'logo_zero_eau'
+    }]
+  };
 
   try {
     await transporter.verify();
-    console.log("✅ Connexion SMTP IONOS établie.");
+    const info = await transporter.sendMail(mailOptions);
+    console.log("✅ Campagne envoyée avec succès !");
+    console.log("ID Message:", info.messageId);
   } catch (err) {
-    console.error("❌ Erreur de connexion SMTP:", err.message);
-    return;
+    console.error("❌ Erreur:", err.message);
+  } finally {
+    transporter.close();
   }
-
-  let success = 0;
-
-
-  for (const clientEmail of partners) {
-    const mailOptions = {
-      from: `"${CONFIG.brand} - Partenariats" <${CONFIG.smtp.auth.user}>`,
-      to: clientEmail, // <--- Envoi direct (machi BCC)
-      subject: `Proposition de Partenariat `,
-      html: htmlContent,
-      attachments: [{
-        filename: 'logo.png',
-        path: path.join(__dirname, 'logo.png'),
-        cid: 'logo_zero_eau'
-      }]
-    };
-
-    try {
-      await transporter.sendMail(mailOptions);
-      console.log(`✅ Envoyé avec succès à : ${clientEmail}`);
-      success++;
-      
-      
-      await new Promise(r => setTimeout(r, 1000));
-
-    } catch (err) {
-      console.error(`❌ Erreur pour ${clientEmail}:`, err.message);
-    }
-  }
-
-  console.log("-----------------------------------");
-  console.log(`🏁 Fin de l'envoi. Total succès: ${success}/${partners.length}`);
-  transporter.close();
 }
+
 sendB2B();
