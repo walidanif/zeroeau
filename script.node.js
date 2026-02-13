@@ -4,8 +4,8 @@ const path = require("path");
 
 const CONFIG = {
   auth: {
-    user: "walidanif3@gmail.com",
-    pass: "pank hsbt npug ucnv" // App Password
+    user: "",
+    pass: "" // App Password
   },
   whatsapp: "212604203076",
   brand: "Zero Eau",
